@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VidyaSetu</title>
+<meta name="theme-color" content="#3730A3">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#/" id="brandLink"><img src="icon.svg" alt=""><span class="bname">VidyaSetu<small>Learn in your own language</small></span></a>
+    <nav class="nav" aria-label="Main">
+      <button type="button" class="nav-btn" data-view="learn" aria-current="page">Lessons</button>
+      <button type="button" class="nav-btn" data-view="teacher">For teachers</button>
+    </nav>
+    <span id="modeBadge" class="badge" hidden></span>
+  </div>
+</header>
+<div id="demoBanner" class="banner" role="status" hidden></div>
+
+<main id="main" tabindex="-1">
+
+  <!-- ===================== LESSONS ===================== -->
+  <section id="view-learn">
+
+    <!-- ---------- Home ---------- -->
+    <div id="home">
+      <div class="wrap hero">
+        <div>
+          <span class="kicker">SDG 4 · Quality Education &nbsp;·&nbsp; SDG 10 · Reduced Inequalities</span>
+          <h1>Any English lesson, <em>in the language you think in</em></h1>
+          <p class="lead">Upload a chapter, paste text or type a topic. VidyaSetu simplifies it for your class, translates it with exam terms kept bilingual, checks its own translation, and lets you listen, ask doubts and take a quiz.</p>
+          <div class="hero-acts">
+            <button type="button" class="btn primary" id="heroCta">Try the sample chapter</button>
+            <button type="button" class="btn" id="heroMake">Make my own lesson</button>
+          </div>
+          <ol class="flow" aria-label="How it works">
+            <li><b>1</b>Upload</li><li><b>2</b>Simplify</li><li><b>3</b>Translate</li><li><b>4</b>Verify</li><li><b>5</b>Listen, ask, quiz</li>
+          </ol>
+        </div>
+        <div class="why" aria-label="Why this matters">
+          <div class="why-card"><b>40%</b><span>of the world's people lack education in a language they speak or understand<small>UNESCO GEM Report</small></span></div>
+          <div class="why-card"><b>1,369</b><span>mother tongues recorded in India, in 121 major languages<small>Census of India 2011</small></span></div>
+          <div class="why-card"><b>Grade 5</b><span>NEP 2020: teach in the home language at least till Grade 5, preferably Grade 8<small>National Education Policy 2020, para 4.11</small></span></div>
+        </div>
+      </div>
+
+      <div class="wrap studio" id="studio">
+        <form id="makeForm" class="workspace" autocomplete="off" aria-labelledby="makeH">
+          <h2 id="makeH">1. Make a lesson</h2>
+
+          <div class="modes" role="tablist" aria-label="Where is the lesson from?">
+            <button type="button" role="tab" class="mode" data-src="upload" aria-selected="true">Upload a file</button>
+            <button type="button" role="tab" class="mode" data-src="paste" aria-selected="false">Paste text</button>
+            <button type="button" role="tab" class="mode" data-src="topic" aria-selected="false">Type a topic</button>
+          </div>
+
+          <div class="src-pane" data-pane="upload">
+            <label class="drop" id="drop">
+              <input type="file" id="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.md">
+              <span class="drop-copy" id="dropText"><b>Drop a chapter here</b><span>PDF or photo of a textbook page. Max 25 MB.</span></span>
+              <span class="btn sm drop-btn">Choose file</span>
+            </label>
+            <details class="pages">
+              <summary>Only some pages?</summary>
+              <div class="row2">
+                <label class="field">From page<input type="number" id="pFrom" min="1" inputmode="numeric" placeholder="1"></label>
+                <label class="field">To page<input type="number" id="pTo" min="1" inputmode="numeric" placeholder="Last page"></label>
+              </div>
+            </details>
+          </div>
+          <div class="src-pane" data-pane="paste" hidden>
+            <label class="field">Lesson text
+              <textarea id="text" rows="7" placeholder="Paste a passage from your textbook"></textarea>
+            </label>
+            <p class="hint" id="textCount" aria-live="polite">Nothing pasted yet.</p>
+          </div>
+          <div class="src-pane" data-pane="topic" hidden>
+            <label class="field">Topic
+              <input type="text" id="topic" maxlength="120" placeholder="For example: the water cycle">
+            </label>
+            <div class="topic-chips" id="topicChips" aria-label="Topic ideas"></div>
+            <p class="hint">The AI writes a short lesson on it for your class, then simplifies and translates it.</p>
+          </div>
+
+          <div class="ws-opts">
+            <fieldset class="pick">
+              <legend>Translate into</legend>
+              <input type="hidden" id="lang" value="hi">
+              <div class="lang-grid" id="langPick" role="radiogroup" aria-label="Language"></div>
+            </fieldset>
+            <fieldset class="pick">
+              <legend>My class</legend>
+              <input type="hidden" id="grade" value="6">
+              <div class="grade-row" id="gradePick" role="radiogroup" aria-label="Class"></div>
+            </fieldset>
+          </div>
+
+          <div class="ws-foot">
+            <button class="btn primary" id="makeBtn" type="submit">Make my lesson</button>
+            <button class="btn" id="sampleBtn" type="button">Try the sample chapter</button>
+          </div>
+        </form>
+
+        <aside class="shelf" aria-labelledby="recentH">
+          <h2 id="recentH">Your lessons <span class="count" id="shelfCount" hidden></span></h2>
+          <ul id="history" class="history"></ul>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ---------- A lesson ---------- -->
+    <div id="lessonView" hidden>
+      <div class="lesson-band">
+        <div class="wrap">
+          <div class="lesson-top">
+            <button type="button" class="back" id="backBtn">&lt; All lessons</button>
+            <div class="lesson-actions">
+              <button type="button" class="btn sm" id="printBtn">Print</button>
+              <button type="button" class="btn sm" id="newBtn">New lesson</button>
+            </div>
+          </div>
+          <h1 id="lTitle" class="lesson-title" tabindex="-1"></h1>
+          <div class="meta" id="lMeta"></div>
+
+          <nav class="sections" role="tablist" aria-label="Lesson sections">
+            <button type="button" role="tab" class="sec" data-pane="read" aria-selected="true">Read</button>
+            <button type="button" role="tab" class="sec" data-pane="ask" aria-selected="false">Ask a doubt</button>
+            <button type="button" role="tab" class="sec" data-pane="quiz" aria-selected="false">Quiz</button>
+            <button type="button" role="tab" class="sec" data-pane="prog" aria-selected="false">Progress</button>
+          </nav>
+        </div>
+      </div>
+
+      <div class="wrap lesson-body">
+        <div id="progress" class="building" aria-live="polite" hidden>
+          <ol class="steps" id="steps">
+            <li data-step="0">Reading your file</li>
+            <li data-step="1">Preparing questions</li>
+            <li data-step="2">Simplifying and translating</li>
+          </ol>
+          <div class="bar" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100"><i id="progBar"></i></div>
+          <p id="progNote" class="hint"></p>
+        </div>
+        <div id="lessonError" class="alert" role="alert" hidden></div>
+
+        <section data-sub="read" role="tabpanel">
+          <div class="read-grid">
+            <div class="read-main">
+              <div class="toolbar" id="toolbar" role="toolbar" aria-label="Reading options">
+                <span class="seg" role="group" aria-label="Show">
+                  <button type="button" class="seg-btn" data-view="both" aria-pressed="true">Both</button>
+                  <button type="button" class="seg-btn" data-view="mine" aria-pressed="false" id="viewMine">My language</button>
+                  <button type="button" class="seg-btn" data-view="english" aria-pressed="false">English</button>
+                </span>
+                <span class="size" role="group" aria-label="Text size">
+                  <button type="button" class="btn sm" id="sizeDown" aria-label="Smaller text">A-</button>
+                  <button type="button" class="btn sm" id="sizeUp" aria-label="Larger text">A+</button>
+                </span>
+                <label class="check"><input type="checkbox" id="showOrig"><span>Original wording</span></label>
+                <button type="button" class="btn primary listen" id="listenBtn">Listen to lesson</button>
+              </div>
+
+              <div class="sheet view-both" id="sheet">
+                <div class="sheet-head">
+                  <span class="h-en" lang="en">English</span>
+                  <span class="h-spine"></span>
+                  <span class="h-local" id="localHead"></span>
+                </div>
+                <div id="paras"></div>
+              </div>
+            </div>
+
+            <aside class="read-aside">
+              <section class="panel" id="checkCard" hidden aria-labelledby="checkH">
+                <h2 id="checkH">Translation check</h2>
+                <p class="panel-sub" id="checkText"></p>
+                <div class="seg-bar" id="checkBar" role="img" aria-label="Translation check results"></div>
+                <ul class="legend" id="checkLegend"></ul>
+              </section>
+              <section class="panel terms" id="glossCard" hidden aria-labelledby="termsH">
+                <h2 id="termsH">Exam terms</h2>
+                <p class="panel-sub">Click a term to hear it.</p>
+                <ul class="term-list" id="gloss"></ul>
+              </section>
+            </aside>
+          </div>
+        </section>
+
+        <section data-sub="ask" role="tabpanel" hidden>
+          <div class="split">
+            <div class="chat">
+              <div id="chatLog" class="chat-log" aria-live="polite"></div>
+              <form id="askForm" class="ask-row">
+                <input type="text" id="askInput" maxlength="300" placeholder="Type your doubt" aria-label="Your question" autocomplete="off">
+                <button type="button" class="btn mic" id="micBtn" aria-label="Ask by voice">Mic</button>
+                <button type="submit" class="btn primary" id="askBtn">Ask</button>
+              </form>
+            </div>
+            <aside class="split-aside">
+              <section class="panel">
+                <h2>Try asking</h2>
+                <div class="suggest" id="suggest"></div>
+                <p class="panel-sub">Ask in your language or in English. Answers come only from your own textbook and say which page.</p>
+              </section>
+            </aside>
+          </div>
+        </section>
+
+        <section data-sub="quiz" role="tabpanel" hidden>
+          <div class="split">
+            <div id="quizBox" class="quiz"></div>
+            <aside class="split-aside"><section class="panel terms"><h2>Exam terms</h2><p class="panel-sub">Click a term to hear it.</p><ul class="term-list" id="gloss2"></ul></section></aside>
+          </div>
+        </section>
+        <section data-sub="prog" role="tabpanel" hidden>
+          <div class="split">
+            <div id="progBox" class="progbox"></div>
+            <aside class="split-aside"><section class="panel terms"><h2>Exam terms</h2><p class="panel-sub">Click a term to hear it.</p><ul class="term-list" id="gloss3"></ul></section></aside>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEACHERS ===================== -->
+  <section id="view-teacher" hidden>
+    <div class="wrap teacher-body">
+      <h1 class="page-title">Teacher mode: one worksheet, many languages</h1>
+      <p>Paste a worksheet or notes and get it in up to 6 languages at once. Exam terms stay bilingual, and each version is checked. <button type="button" class="sample-link" id="tSample">Use a sample worksheet</button></p>
+      <div class="teacher">
+        <form id="teachForm" class="workspace" autocomplete="off">
+          <label class="field">Worksheet or notes<textarea id="tText" rows="9" maxlength="4000" placeholder="Paste your worksheet here"></textarea></label>
+          <fieldset class="langs pick">
+            <legend>Languages</legend>
+            <div id="tLangs" class="chips"></div>
+          </fieldset>
+          <div class="row2">
+            <label class="field">Students' class<select id="tGrade"></select></label>
+            <label class="check lower"><input type="checkbox" id="tSimple"><span>Simplify the English first</span></label>
+          </div>
+          <button class="btn primary block" id="tBtn" type="submit">Convert worksheet</button>
+        </form>
+        <div id="tOut" class="t-out" aria-live="polite">
+          <p class="t-empty">Translated versions will appear here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Listening bar -->
+<div id="player" class="player" role="region" aria-label="Listening controls" hidden>
+  <button type="button" class="btn sm" id="plPrev" aria-label="Previous paragraph">Prev</button>
+  <button type="button" class="btn sm pl-main" id="plToggle" aria-label="Pause"></button>
+  <button type="button" class="btn sm" id="plNext" aria-label="Next paragraph">Next</button>
+  <div class="pl-info"><b id="plLabel">Paragraph 1 of 1</b><span id="plSub"></span></div>
+  <button type="button" class="btn sm" id="plRate" aria-label="Speaking speed">1x</button>
+  <button type="button" class="btn sm" id="plClose" aria-label="Close player">Close</button>
+</div>
+
+<div id="termPop" class="termpop" role="dialog" aria-label="Exam term" hidden></div>
+
+<dialog id="confirm" class="dialog">
+  <form method="dialog">
+    <h2 id="confirmTitle">Delete this lesson?</h2>
+    <p id="confirmText">It will be removed from this computer. Your quiz scores for it go too.</p>
+    <div class="dialog-actions">
+      <button type="submit" value="cancel" class="btn">Keep it</button>
+      <button type="submit" value="ok" class="btn" id="confirmOk">Delete lesson</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" role="status" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

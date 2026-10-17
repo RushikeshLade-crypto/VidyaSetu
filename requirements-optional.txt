@@ -1,0 +1,5 @@
+# Optional extras. The app works without them.
+# OCR for photos / scanned pages (also install the Tesseract program itself)
+pytesseract>=0.3.10
+# ChromaDB vector store (without it, textbook search uses SQLite + numpy instead)
+chromadb>=0.5

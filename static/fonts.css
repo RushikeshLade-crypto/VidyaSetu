@@ -1,0 +1,127 @@
+/* Bundled fonts (SIL Open Font License) so the app looks the same offline. */
+@font-face {
+  font-family: 'Noto Serif Devanagari';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-devanagari-devanagari-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Devanagari';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-devanagari-devanagari-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Bengali';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-bengali-bengali-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Bengali';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-bengali-bengali-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Tamil';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-tamil-tamil-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Tamil';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-tamil-tamil-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Telugu';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-telugu-telugu-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Telugu';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-telugu-telugu-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Gujarati';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-gujarati-gujarati-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Gujarati';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-gujarati-gujarati-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Kannada';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-kannada-kannada-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Kannada';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-kannada-kannada-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Malayalam';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-malayalam-malayalam-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Malayalam';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-malayalam-malayalam-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Gurmukhi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-serif-gurmukhi-gurmukhi-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Serif Gurmukhi';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-serif-gurmukhi-gurmukhi-600-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Nastaliq Urdu';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/noto-nastaliq-urdu-arabic-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Nastaliq Urdu';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/noto-nastaliq-urdu-arabic-600-normal.woff2) format('woff2');
+}
